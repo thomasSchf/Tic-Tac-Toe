@@ -4,32 +4,21 @@ root = Tk()
 frm = ttk.Frame(root, padding=10)
 frm.grid()
 
-box1 = Listbox(root, borderwidth=0, background='white')
-box1.grid(column=0,row=2)
+def makeTicBox(col: int, row: int) -> Listbox:
+    box = Listbox(root, borderwidth=0, background='white')
+    box.grid(column=col, row=row)
 
-box2 = Listbox(root, borderwidth=0, background='white')
-box2.grid(column=0,row=3)
+    return box
 
-box3 = Listbox(root, borderwidth=0, background='white')
-box3.grid(column=0,row=4)
+box1 = makeTicBox(0, 0)
+box2 = makeTicBox(1, 0)
+box3 = makeTicBox(2, 0)
+box4 = makeTicBox(0, 1)
+box5 = makeTicBox(1, 1)
+box6 = makeTicBox(2, 1)
+box7 = makeTicBox(0, 2)
+box8 = makeTicBox(1, 2)
+box9 = makeTicBox(2, 2)
 
-box4 = Listbox(root, borderwidth=0, background='white')
-box4.grid(column=1,row=2)
-
-box5 = Listbox(root, borderwidth=0, background='white')
-box5.grid(column=1,row=3)
-
-box6 = Listbox(root, borderwidth=0, background='white')
-box6.grid(column=1,row=4)
-
-
-box7 = Listbox(root, borderwidth=0, background='white')
-box7.grid(column=2,row=2)
-
-box8 = Listbox(root, borderwidth=0, background='white')
-box8.grid(column=2,row=3)
-
-box9 = Listbox(root, borderwidth=0, background='white')
-box9.grid(column=2,row=4)
 ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=10)
 root.mainloop()
