@@ -10,15 +10,13 @@ def makeTicBox(col: int, row: int) -> Listbox:
 
     return box
 
-box1 = makeTicBox(0, 0)
-box2 = makeTicBox(1, 0)
-box3 = makeTicBox(2, 0)
-box4 = makeTicBox(0, 1)
-box5 = makeTicBox(1, 1)
-box6 = makeTicBox(2, 1)
-box7 = makeTicBox(0, 2)
-box8 = makeTicBox(1, 2)
-box9 = makeTicBox(2, 2)
+boxList = [None] * 3
+
+for row in range(3):
+    boxList[row] = [None] * 3
+
+    for col in range(3):
+        boxList[row][col] = makeTicBox(col, row)
 
 ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=10)
 root.mainloop()
