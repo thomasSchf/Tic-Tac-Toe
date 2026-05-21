@@ -18,5 +18,38 @@ for row in range(3):
     for col in range(3):
         boxList[row][col] = makeTicBox(col, row)
 
+#x and o list
+xoList = [None] * 3
+
+for row in range(3):
+    xoList[row] = [None] * 3
+
+    for col in range(3):
+        xoList[row][col] = ""
+
+
+options = ["X", "O"]
+currOption = 0
+
+def turn(event):
+    global currOption
+    
+    if(event.widget["background"] == "white"):
+        event.widget["background"] = "gray"
+        event.widget.insert(END, options[currOption])
+        currOption = (currOption + 1) % 2
+
+    # 0 // 2 -> 0 0
+    # 1 // 2 -> 0 1
+    # 2 // 2 -> 1 0
+    # 3 // 2 -> 1 1
+    # 4 // 2 -> 2 0
+
+for boxCol in boxList:
+    for box in boxCol:
+        box.bind("<Button>", turn)
+        print("hi")
+       
+
 ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=10)
 root.mainloop()
