@@ -4,9 +4,12 @@ root = Tk()
 frm = ttk.Frame(root, padding=10)
 frm.grid()
 
+
 def makeTicBox(col: int, row: int) -> Listbox:
     box = Listbox(root, borderwidth=0, background='white')
     box.grid(column=col, row=row)
+    box.IsPressed = False
+    #box.Symbol = ""
 
     return box
 
@@ -16,16 +19,8 @@ for row in range(3):
     boxList[row] = [None] * 3
 
     for col in range(3):
-        boxList[row][col] = makeTicBox(col, row)
+        boxList[row][col] = makeTicBox(col,row)
 
-#x and o list
-xoList = [None] * 3
-
-for row in range(3):
-    xoList[row] = [None] * 3
-
-    for col in range(3):
-        xoList[row][col] = ""
 
 
 options = ["X", "O"]
@@ -33,11 +28,15 @@ currOption = 0
 
 def turn(event):
     global currOption
+
     
-    if(event.widget["background"] == "white"):
+    if(not event.widget.IsPressed):
         event.widget["background"] = "gray"
+        event.widget.IsPressed = True
         event.widget.insert(END, options[currOption])
         currOption = (currOption + 1) % 2
+
+    
 
     # 0 // 2 -> 0 0
     # 1 // 2 -> 0 1
@@ -48,7 +47,6 @@ def turn(event):
 for boxCol in boxList:
     for box in boxCol:
         box.bind("<Button>", turn)
-        print("hi")
        
 
 ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=10)
