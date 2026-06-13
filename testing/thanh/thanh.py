@@ -72,31 +72,31 @@ def winCon(player: str, row: int, col: int) -> bool:
 
 def diagonalRight(player: str) -> bool:
     for i in range(3):
-        if (boxList[i][i].player == player): 
+        if (boxList[i][i].player != player): 
             print("drBox")
-            return True
-    return False
+            return False
+    return True
 
 def diagonalLeft(player: str) -> bool:
     for i in range(3):
-        if (boxList[i][i].player == player): 
-            print("dlBox")
-            return True
-    return False
+        if (boxList[i][i].player != player): 
+            print("drBox")
+            return False
+    return True
 
 def down(player: str, col: int) -> bool:
     for i in range(3):
-        if (boxList[i][col].player == player):
-            print("dBox")
-            return True
-    return False
+        if (boxList[i][col].player != player): 
+            print("drBox")
+            return False
+    return True
 
 def right(player: str, row: int) -> bool:
     for i in range(3):
-        if (boxList[row][i].player == player):
-            print("rBox")
-            return True
-    return False
+        if (boxList[row][i].player != player): 
+            print("drBox")
+            return False
+    return True
 
 
 ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=10)
